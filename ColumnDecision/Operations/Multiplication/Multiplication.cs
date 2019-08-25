@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using ColumnDecision.Helper;
 
 namespace ColumnDecision.Operations.Multiplication
 {
@@ -58,6 +59,11 @@ namespace ColumnDecision.Operations.Multiplication
             return GetResult(valueList);
         }
 
+        /// <summary>
+        /// Вернуть конечный результат
+        /// </summary>
+        /// <param name="array">Прорешенный массив</param>
+        /// <returns></returns>
         private string GetResult(List<decimal> array)
         {
             string[] arrayStrList = GetArrayStr(array);
@@ -65,11 +71,15 @@ namespace ColumnDecision.Operations.Multiplication
             return GetResult(arrayStrList);
         }
 
-
+        /// <summary>
+        /// Обработка данных вернуть результат
+        /// </summary>
+        /// <param name="arrayStrList">Прорешенный массив</param>
+        /// <returns></returns>
         private string GetResult(string[] arrayStrList)
         {
             int count = arrayStrList.Length == 3 ? 1 : 2;
-            int maxLength = GetMaxLength(arrayStrList) + 1;
+            int maxLength = arrayStrList.GetMaxLength() + 1;
             string[,] arrayStrListHelper = GetStrListHelper(arrayStrList, maxLength, count);
 
             StringBuilder buffer = new StringBuilder();
@@ -150,17 +160,11 @@ namespace ColumnDecision.Operations.Multiplication
             return arrayStrListHelper;
         }
 
-        private int GetMaxLength(string[] array)
-        {
-            List<int> lstNumber = new List<int>();
-            for (int i = 0; i < array.Length; i++)
-            {
-                lstNumber.Add(array[i].Length);
-            }
-
-            return lstNumber.Max();
-        }
-
+        /// <summary>
+        /// Преобразование в строчный массив
+        /// </summary>
+        /// <param name="array">Прорешенный массив</param>
+        /// <returns></returns>
         private string[] GetArrayStr(List<decimal> array)
         {
             string[] arrayStrList = new string[array.Count];

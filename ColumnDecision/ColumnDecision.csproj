@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\ClassHelper.cs" />
     <Compile Include="Operations\AdditionSubtraction\AdditionSubtraction.cs" />
     <Compile Include="Operations\Addition\Addition.cs" />
     <Compile Include="Operations\Multiplication\Multiplication.cs" />

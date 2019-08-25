@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ColumnDecision.Helper;
 
 namespace ColumnDecision.Operations.AdditionSubtraction
 {
@@ -22,96 +23,87 @@ namespace ColumnDecision.Operations.AdditionSubtraction
         protected string GetValue(decimal termOne, decimal termTwo, decimal sum, string sign)
         {
             StringBuilder line = new StringBuilder(string.Empty);
-            int maxLength = GetMaxLine(new[] { termOne, termTwo, sum });
-            string[] arrayStr = GetArrayToStr(new[] { termOne, termTwo, sum }, sign);
+            string[] arrayStr = GetArrayToStr(new[] { termOne, termTwo, sum });
 
-            StringBuilder[] lstLine = new StringBuilder[arrayStr.Count()];
-            for (int i = 0; i < lstLine.Count(); i++)
-            {
-                lstLine[i] = new StringBuilder(arrayStr[i]);
-            }
-            int countReplay = 0;
-            string preValue = string.Empty;
-            for (int i = 0; i < lstLine.Count(); i++)
-            {
-                if (lstLine[i].ToString().Trim().Length != maxLength)
-                {
-                    preValue = lstLine[i].ToString();
-                    countReplay = maxLength - preValue.Trim().Length;
-                    if (countReplay > 0)
-                    {
-                        lstLine[i] = new StringBuilder(new string(' ', countReplay));
-                        lstLine[i].Append(preValue);
-                    }
-                }
-                line.Append(lstLine[i] + Environment.NewLine);
-            }
-            return line.ToString();
+            return GetResult(arrayStr, sign);
         }
 
         /// <summary>
-        /// Вернуть максимальное число в строке
+        /// Результат
         /// </summary>
-        /// <param name="args">Аргументы</param>
+        /// <param name="arrayStrList">Прорешенный массив</param>
+        /// <param name="sign">Математический знак </param>
         /// <returns></returns>
-        private int GetMaxLine(decimal[] args)
+        private string GetResult(string[] arrayStrList, string sign)
         {
-            int[] maxLength = new int[args.Length];
-            for (int i = 0; i < args.Length; i++)
+            int maxLength = arrayStrList.GetMaxLength() + 1;
+            string[,] arrayStrListHelper = GetStrListHelper(arrayStrList, maxLength, sign);
+
+            StringBuilder buffer = new StringBuilder();
+
+            for (int i = 0; i < arrayStrList.Length; i++)
             {
+                for (int j = 0; j < maxLength; j++)
+                {
+                    buffer.Append(arrayStrListHelper[i, j]?.ToString());
+                }
                 if (i == 1)
                 {
-                    if (args[i].ToString().Length == args[i - 1].ToString().Length &&
-                        args[i + 1].ToString().Length == args[i - 1].ToString().Length &&
-                        args[i].ToString().Length == args[i + 1].ToString().Length)
-                        maxLength[i] = args[i].ToString().Length + 1;
-                    else
-                        maxLength[i] = args[i].ToString().Length + 1;
-                    continue;
+                    buffer.Append(Environment.NewLine);
+                    buffer.Append(new string('_', maxLength));
                 }
-                maxLength[i] = args[i].ToString().Length;
+
+                buffer.Append(Environment.NewLine);
             }
-            return maxLength.Max();
+
+            return buffer.ToString();
+        }
+
+        /// <summary>
+        /// Собрать данные в матричном виде
+        /// </summary>
+        /// <param name="arrayStrList">Прорешенный массив</param>
+        /// <param name="maxLength">Максимальная строка в массиве</param>
+        /// <param name="sign">Знак математического действия</param>
+        /// <returns></returns>
+        private string[,] GetStrListHelper(string[] arrayStrList, int maxLength, string sign)
+        {
+            int index = 0, indexIndentRigth = 1;
+            string line = "";
+            string[,] arrayStrListHelper = new string[arrayStrList.Length, maxLength];
+            for (int i = 0; i < arrayStrList.Length; i++)
+            {
+                line = arrayStrList[i].Trim();
+                index = line.Length;
+
+                for (int j = maxLength - indexIndentRigth; j >= 0; j--)
+                {
+                    index--;
+                    if (j == 0 && i == 1)
+                    {
+                        arrayStrListHelper[i, j] = sign;
+                        break;
+                    }
+                    arrayStrListHelper[i, j] = (index > -1) ? line[index].ToString() : " ";
+                }
+            }
+
+            return arrayStrListHelper;
         }
 
         /// <summary>
         /// Преобразоние из числового в строчное представление в столбик
         /// </summary>
         /// <param name="args">Аргументы</param>
-        /// <param name="sign">Знак плюс или минус</param>
         /// <returns></returns>
-        private string[] GetArrayToStr(decimal[] args, string sign)
+        private string[] GetArrayToStr(decimal[] args)
         {
-            string[] arayLine = new string[args.Length + 1];
-            int countDifference = 0;
-            for (int i = 0; i < arayLine.Length; i++)
+            string[] arrayStrList = new string[args.Length];
+            for (int i = 0; i < args.Length; i++)
             {
-                if (i == 1)
-                {
-                    countDifference = args[i - 1].ToString().Length - args[i].ToString().Length;
-                    if (countDifference > 0)
-                    {
-                        //countDifference++;
-                        arayLine[i] = sign + new string(' ', countDifference) + args[i].ToString();
-                        arayLine[i - 1] = " " + arayLine[i - 1];
-                    }
-                    else
-                    {
-                        arayLine[i] = sign + args[i].ToString();
-                        countDifference = Math.Abs(countDifference);
-                    }
-
-                    i++;
-                    arayLine[i] = new string(' ', countDifference > 0 ? 1 : 0) + new string('_', GetMaxLine(args));
-                    continue;
-                }
-                if (args.Length > i)
-                    arayLine[i] = args[i].ToString();
-                else
-                    arayLine[i] = new string(' ', countDifference > 0 ? 1 : 0) + args[i - 1].ToString();
+                arrayStrList[i] = args[i].ToString();
             }
-
-            return arayLine;
+            return arrayStrList;
         }
     }
 }
