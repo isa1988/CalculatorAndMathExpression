@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdditionOperation.cs" />
+    <Compile Include="ErrorOperation.cs" />
     <Compile Include="DivisionOperation.cs" />
     <Compile Include="AllOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -41,11 +41,38 @@ namespace ColumnDecision
         public string GetResult(string value)
         {
             value = value.Replace(".", ",");
+            if (!CheckExpression(value))
+            {
+                return "В выражение есть лишние символы, которые могут повлечь за собой ошибки при вычисление";
+            }
             arguments = new List<StringBuilder>();
             operations = new List<PrioritySpecionForOperation>();
             SetArray(value);
             SetOrder();
             return GetResult();
+        }
+
+        private bool CheckExpression(string value)
+        {
+            string[] chekArray = new string[16];
+            for (int i = 0; i < 10; i++)
+            {
+                chekArray[i] = i.ToString();
+            }
+
+            chekArray[10] = ",";
+            chekArray[11] = "*";
+            chekArray[12] = "/";
+            chekArray[13] = "+";
+            chekArray[14] = "-";
+            chekArray[15] = " ";
+
+            for (int i = 0; i < chekArray.Length; i++)
+            {
+                value = value.Replace(chekArray[i], string.Empty);
+            }
+
+            return value == string.Empty;
         }
 
         /// <summary>
