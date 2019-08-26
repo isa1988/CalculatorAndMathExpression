@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ColumnDecision.Operations.Addition;
+using ColumnDecision.Operations.Division;
 using ColumnDecision.Operations.Multiplication;
 using ColumnDecision.Operations.Subtraction;
 
@@ -60,8 +61,9 @@ namespace ColumnDecision
             operation.SetCommand(0, new MultiplicationCalc());
             operation.SetCommand(1, new AdditionCalc());
             operation.SetCommand(2, new SubtractionCalc());
+            operation.SetCommand(3, new DivisionCalc());
             decimal result = 0;
-            return operation.Calc(2, decimal.Parse(arguments[0].ToString()), 
+            return operation.Calc(3, decimal.Parse(arguments[0].ToString()), 
                                      decimal.Parse(arguments[1].ToString()), ref result);
         }
     }

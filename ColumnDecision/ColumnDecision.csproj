@@ -44,6 +44,9 @@
     <Compile Include="Helper\ClassHelper.cs" />
     <Compile Include="Operations\AdditionSubtraction\AdditionSubtraction.cs" />
     <Compile Include="Operations\Addition\Addition.cs" />
+    <Compile Include="Operations\Division\Division.cs" />
+    <Compile Include="Operations\Division\DivisionCalc.cs" />
+    <Compile Include="Operations\Division\DivisionHelper.cs" />
     <Compile Include="Operations\Multiplication\Multiplication.cs" />
     <Compile Include="Operations\Multiplication\MultiplicationCalc.cs" />
     <Compile Include="Operations\Subtraction\Subtraction.cs" />
