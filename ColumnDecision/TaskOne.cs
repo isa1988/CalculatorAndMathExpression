@@ -162,7 +162,7 @@ namespace ColumnDecision
         private string GetNameOperation(PrioritySpecionForOperation value)
         {
             return "Действие " + value.Step.ToString() + " " + arguments[value.IndexOne].ToString() +
-                   " " + value.Operation + arguments[value.IndexTwo].ToString();
+                   " " + value.Operation + " " + arguments[value.IndexTwo].ToString();
         }
     }
 }
