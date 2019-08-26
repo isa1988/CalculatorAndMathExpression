@@ -49,6 +49,7 @@
     <Compile Include="Operations\Division\DivisionHelper.cs" />
     <Compile Include="Operations\Multiplication\Multiplication.cs" />
     <Compile Include="Operations\Multiplication\MultiplicationCalc.cs" />
+    <Compile Include="Operations\OperationType.cs" />
     <Compile Include="Operations\Subtraction\Subtraction.cs" />
     <Compile Include="Operations\Subtraction\SubtractionCalc.cs" />
     <Compile Include="Operations\ICalc.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="Operations\NoCommand.cs" />
     <Compile Include="Operations\Operation.cs" />
     <Compile Include="TaskOne.cs" />
-    <Compile Include="PriorityHelper.cs" />
+    <Compile Include="PrioritySpecionForOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

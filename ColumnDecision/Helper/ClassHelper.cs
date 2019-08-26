@@ -13,15 +13,6 @@ namespace ColumnDecision.Helper
         /// </summary>
         /// <param name="array">Массив</param>
         /// <returns></returns>
-        public static int GetMaxLength(this string[] array)
-        {
-            List<int> lstNumber = new List<int>();
-            for (int i = 0; i < array.Length; i++)
-            {
-                lstNumber.Add(array[i].Length);
-            }
-
-            return lstNumber.Max();
-        }
+        public static int GetMaxLength(this string[] array) => array.Max(x => x.Length);
     }
 }

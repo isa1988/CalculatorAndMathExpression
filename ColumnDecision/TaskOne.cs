@@ -25,14 +25,35 @@ namespace ColumnDecision
         /// </summary>
         List<PrioritySpecionForOperation> operations = new List<PrioritySpecionForOperation>();
 
+        Operation operation = new Operation();
+        public TaskOne()
+        {
+            operation.SetCommand((int)OperationType.Multiplication, new MultiplicationCalc());
+            operation.SetCommand((int)OperationType.Division, new DivisionCalc());
+            operation.SetCommand((int)OperationType.Addition, new AdditionCalc());
+            operation.SetCommand((int)OperationType.Subtraction, new SubtractionCalc());
+        }
+
         /// <summary>
         /// Вычисление
         /// </summary>
         /// <param name="value">Математическое выражение</param>
         public string GetResult(string value)
         {
+            value = value.Replace(".", ",");
             arguments = new List<StringBuilder>();
             operations = new List<PrioritySpecionForOperation>();
+            SetArray(value);
+            SetOrder();
+            return GetResult();
+        }
+
+        /// <summary>
+        /// заполнение массивов аргуметов и операций
+        /// </summary>
+        /// <param name="value">Математическое выражение</param>
+        private void SetArray(string value)
+        {
             StringBuilder number = new StringBuilder(string.Empty);
             int index = 0;
             for (int i = 0; i < value.Length; i++)
@@ -40,7 +61,7 @@ namespace ColumnDecision
                 if (value[i].ToString() == " ") continue;
                 if (i == 0 && value[i].ToString() == "-")
                 {
-                    operations.Add(new PrioritySpecionForOperation("-", 0, 0));
+                    operations.Add(new PrioritySpecionForOperation("-", 0, 0, -1));
                     continue;
                 }
 
@@ -57,14 +78,91 @@ namespace ColumnDecision
                 number.Append(value[i].ToString());
             }
             arguments.Add(number);
-            Operation operation = new Operation();
-            operation.SetCommand(0, new MultiplicationCalc());
-            operation.SetCommand(1, new AdditionCalc());
-            operation.SetCommand(2, new SubtractionCalc());
-            operation.SetCommand(3, new DivisionCalc());
-            decimal result = 0;
-            return operation.Calc(3, decimal.Parse(arguments[0].ToString()), 
-                                     decimal.Parse(arguments[1].ToString()), ref result);
+        }
+
+        private void SetOrder()
+        {
+            int step = 0;
+            foreach (PrioritySpecionForOperation rec in operations.Where(x => x.Operation == "/" ||
+                                                                              x.Operation == "*"))
+            {
+                step = SetStep(rec, step);
+            }
+            foreach (PrioritySpecionForOperation rec in operations.Where(x => x.Operation == "+" ||
+                                                                 (x.Operation == "-" && x.Step != -1)))
+            {
+                step = SetStep(rec, step);
+            }
+        }
+
+        private int SetStep(PrioritySpecionForOperation rec, int step)
+        {
+            int index = operations.IndexOf(rec);
+            step++;
+            operations[index].Step = step;
+            return step;
+        }
+
+        private string GetResult()
+        {
+            StringBuilder result = new StringBuilder(string.Empty);
+            int countActions = operations.Max(x => x.Step);
+            decimal resultOfOperation = 0;
+            if (countActions > 1)
+            {
+                foreach (PrioritySpecionForOperation rec in operations.OrderBy(x => x.Step))
+                {
+                    if (rec.Step == -1) continue;
+                    result.Append(GetNameOperation(rec) + Environment.NewLine);
+                    result.Append(GetResult(rec, ref resultOfOperation) + Environment.NewLine);
+                    DeleteAndUpdateIndexOfArguments(rec, resultOfOperation);
+                }
+
+                string line = "Ответ " + resultOfOperation.ToString() + Environment.NewLine + result.ToString();
+                result = new StringBuilder(line);
+            }
+
+            else
+            {
+                int index = operations.Count == 1 ? 0 : 1;
+                result.Append(GetResult(operations[index], ref resultOfOperation) + Environment.NewLine);
+            }
+
+            return result.ToString();
+        }
+
+        private string GetResult(PrioritySpecionForOperation value, ref decimal result)
+        {
+            if (value.IndexOne == 0)
+            {
+                PrioritySpecionForOperation checkSpecialSubtraction = operations.FirstOrDefault(x => x.Step == -1);
+                if (checkSpecialSubtraction?.Operation == "-")
+                {
+                    return operation.Calc(value.OperationIndex, decimal.Parse(arguments[value.IndexOne].ToString()) * (-1),
+                        decimal.Parse(arguments[value.IndexTwo].ToString()), ref result);
+                }
+            }
+            return operation.Calc(value.OperationIndex, decimal.Parse(arguments[value.IndexOne].ToString()),
+                decimal.Parse(arguments[value.IndexTwo].ToString()), ref result);
+        }
+
+        private void DeleteAndUpdateIndexOfArguments(PrioritySpecionForOperation value, decimal result)
+        {
+            arguments[value.IndexOne] = new StringBuilder(result.ToString());
+            arguments.Remove(arguments[value.IndexTwo]);
+            int index = 0;
+            foreach (PrioritySpecionForOperation rec in operations.Where(x=>x.IndexOne >= value.IndexTwo ||
+                                                                            x.IndexTwo >= value.IndexTwo))
+            {
+                index = operations.IndexOf(rec);
+                operations[index].UpdateIndex(value.IndexTwo);
+            }
+        }
+
+        private string GetNameOperation(PrioritySpecionForOperation value)
+        {
+            return "Действие " + value.Step.ToString() + " " + arguments[value.IndexOne].ToString() +
+                   " " + value.Operation + arguments[value.IndexTwo].ToString();
         }
     }
 }

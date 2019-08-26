@@ -96,14 +96,6 @@ namespace ColumnDecision.Operations.AdditionSubtraction
         /// </summary>
         /// <param name="args">Аргументы</param>
         /// <returns></returns>
-        private string[] GetArrayToStr(decimal[] args)
-        {
-            string[] arrayStrList = new string[args.Length];
-            for (int i = 0; i < args.Length; i++)
-            {
-                arrayStrList[i] = args[i].ToString();
-            }
-            return arrayStrList;
-        }
+        private string[] GetArrayToStr(decimal[] args) => args.Select(x => x.ToString()).ToArray();
     }
 }
