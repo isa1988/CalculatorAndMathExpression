@@ -21,7 +21,7 @@ namespace ColumnDecision.Operations.Multiplication
         /// <returns></returns>
         public decimal Composition(decimal multiplierOne, decimal multiplierTwo)
         {
-            return multiplierOne + multiplierTwo;
+            return multiplierOne * multiplierTwo;
         }
 
         /// <summary>

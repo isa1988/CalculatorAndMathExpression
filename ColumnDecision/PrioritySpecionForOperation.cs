@@ -57,7 +57,7 @@ namespace ColumnDecision
                 }
                 case "-":
                 {
-                    OperationIndex = (int)OperationType.Multiplication;
+                    OperationIndex = (int)OperationType.Subtraction;
                     break;
                 }
             }
