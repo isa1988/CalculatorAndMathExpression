@@ -1,0 +1,36 @@
+﻿@model WebColumnDecision.Models.TaskOne
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@Model.Title</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Export, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Export, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Export, "", new { @class = "text-danger" })
+            </div>
+            <sub>Вы можете вести что то типа 8 - 7 * 6 - 4 / 2 только без скобок</sub>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Вычислить" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model.Result?.Length > 0)
+{
+    <pre>@Model.Result</pre>
+}
