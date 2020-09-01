@@ -11,9 +11,9 @@ using MathExpression;
 
 namespace WFAApp
 {
-    public partial class frmCalc : Form
+    public partial class frm_MathExpression : Form
     {
-        public frmCalc()
+        public frm_MathExpression()
         {
             InitializeComponent();
         }

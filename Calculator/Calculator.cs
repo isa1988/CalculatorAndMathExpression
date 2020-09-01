@@ -8,6 +8,11 @@ namespace Calculator
 {
     public class Calculator : IState
     {
+        private bool isStart;
+        public bool IsStart
+        {
+            get { return isStart; }
+        }
         private IState state;
         public IState State
         {
@@ -19,6 +24,12 @@ namespace Calculator
         public Calculator()
         {
             Clear();
+        }
+
+        protected Calculator(bool flag)
+        {
+            state = null;
+            SetStart(flag);
         }
 
         public void Push(string key)
@@ -47,9 +58,9 @@ namespace Calculator
             }
         }
 
-        protected Calculator(bool flag)
+        protected void SetStart(bool value)
         {
-            state = null;
+            isStart = value;
         }
         void Clear()
         {
@@ -69,6 +80,7 @@ namespace Calculator
             if (state.State != null && state.State != state)
             {
                 this.state = state.State;
+                isStart = this.State.IsStart;
                 SetState(this.state);
             }
         }

@@ -1,6 +1,6 @@
 ﻿namespace WFAApp
 {
-    partial class frmCalc
+    partial class frm_MathExpression
     {
         /// <summary>
         /// Обязательная переменная конструктора.

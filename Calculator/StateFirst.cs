@@ -23,6 +23,12 @@ namespace Calculator
                 key = ".";
                 isPoing = true;
             }
+
+            if (base.valueOne.Length > 0)
+            {
+                base.SetStart(false);
+            }
+
             base.valueOne += key; 
         }
 

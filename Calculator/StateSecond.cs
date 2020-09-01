@@ -3,7 +3,7 @@
     class StateSecond : Calculator, IState
     {
         private bool isPoing;
-        public StateSecond(string valueOne, string operation) : base(true)
+        public StateSecond(string valueOne, string operation) : base(false)
         {
             base.valueOne = valueOne;
             base.operation = operation;
@@ -40,7 +40,7 @@
 
         public string Screen()
         {
-            return base.operation + " " + base.valueTwo;
+            return base.valueTwo;
         }
     }
 }

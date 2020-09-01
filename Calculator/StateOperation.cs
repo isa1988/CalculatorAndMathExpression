@@ -2,7 +2,7 @@
 {
     class StateOperation : Calculator, IState
     {
-        public StateOperation(string valueOne) : base(true)
+        public StateOperation(string valueOne) : base(false)
         {
             base.operation = string.Empty;
             base.valueOne = valueOne;

@@ -46,16 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCalc.cs">
+    <Compile Include="frm_MathExpression.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCalc.Designer.cs">
-      <DependentUpon>frmCalc.cs</DependentUpon>
+    <Compile Include="frm_MathExpression.Designer.cs">
+      <DependentUpon>frm_MathExpression.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Calculate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Calculate.Designer.cs">
+      <DependentUpon>frm_Calculate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Main.Designer.cs">
+      <DependentUpon>frm_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmCalc.resx">
-      <DependentUpon>frmCalc.cs</DependentUpon>
+    <EmbeddedResource Include="frm_MathExpression.resx">
+      <DependentUpon>frm_MathExpression.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Calculate.resx">
+      <DependentUpon>frm_Calculate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Main.resx">
+      <DependentUpon>frm_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,6 +99,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Calculator\Calculator.csproj">
+      <Project>{5a549544-256d-440e-9413-507fd59bc707}</Project>
+      <Name>Calculator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MathExpression\MathExpression.csproj">
       <Project>{4255a0e9-5753-4295-a7cc-bb7047cb15c9}</Project>
       <Name>MathExpression</Name>

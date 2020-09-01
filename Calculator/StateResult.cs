@@ -5,7 +5,7 @@ namespace Calculator
     class StateResult : Calculator, IState
     {
 
-        public StateResult(string valueOne, string operation, string valueTwo) : base(true)
+        public StateResult(string valueOne, string operation, string valueTwo) : base(false)
         {
             base.valueOne = valueOne;
             base.operation = operation;
