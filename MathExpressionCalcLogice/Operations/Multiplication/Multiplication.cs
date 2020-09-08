@@ -4,9 +4,9 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using MathExpression.Helper;
+using MathExpressionCalcLogice.Helper;
 
-namespace MathExpression.Operations.Multiplication
+namespace MathExpressionCalcLogice.Operations.Multiplication
 {
     /// <summary>
     /// Умнажение

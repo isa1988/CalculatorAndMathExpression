@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations
+namespace MathExpressionCalcLogice.Operations
 {
     /// <summary>
     /// Математическая операция
     /// </summary>
-    enum OperationType : int
+    public enum OperationType : int
     {
         /// <summary>
         /// Умножение

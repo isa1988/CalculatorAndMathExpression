@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MathExpressionWithBrackets;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -30,7 +31,7 @@ namespace WebApp.Controllers
         {
             model.Title = "Первое задание";
             if (model.Export == null || model.Export == string.Empty) return View(model);
-            model.Result = new MathExpression.TaskOne().GetResult(model.Export);
+            model.Result = new MathExpressionWithBracketsCalc().GetResult(model.Export);
             return View(model);
         }
     }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathExpression.Helper;
+using MathExpressionCalcLogice.Helper;
 
-namespace MathExpression.Operations.AdditionSubtraction
+namespace MathExpressionCalcLogice.Operations.AdditionSubtraction
 {
     /// <summary>
     /// Общие методы можду сложением и вычитанием

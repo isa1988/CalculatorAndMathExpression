@@ -4,17 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations.Multiplication
+namespace MathExpressionCalcLogice.Operations.Multiplication
 {
-    class MultiplicationCalc : ICalc
+    public class MultiplicationCalc : ICalc
     {
         private Multiplication multiplication;
-
-        public MultiplicationCalc(Multiplication multiplication)
-        {
-            this.multiplication = multiplication;
-        }
-
+        
         public MultiplicationCalc()
         {
             this.multiplication = new Multiplication();

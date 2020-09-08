@@ -4,17 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations.Addition
+namespace MathExpressionCalcLogice.Operations.Addition
 {
-    class AdditionCalc : ICalc
+    public class AdditionCalc : ICalc
     {
         private Addition addition;
-
-        public AdditionCalc(Addition addition)
-        {
-            this.addition = addition;
-        }
-
+        
         public AdditionCalc()
         {
             this.addition = new Addition();

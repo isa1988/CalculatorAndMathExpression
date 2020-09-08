@@ -1,13 +1,13 @@
-﻿using MathExpression.Operations;
+﻿using MathExpressionCalcLogice.Operations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathExpression.Operations.Addition;
-using MathExpression.Operations.Division;
-using MathExpression.Operations.Multiplication;
-using MathExpression.Operations.Subtraction;
+using MathExpressionCalcLogice.Operations.Addition;
+using MathExpressionCalcLogice.Operations.Division;
+using MathExpressionCalcLogice.Operations.Multiplication;
+using MathExpressionCalcLogice.Operations.Subtraction;
 
 namespace MathExpression
 {

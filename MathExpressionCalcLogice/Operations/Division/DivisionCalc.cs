@@ -4,20 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations.Division
+namespace MathExpressionCalcLogice.Operations.Division
 {
     /// <summary>
     /// Операймя деления
     /// </summary>
-    class DivisionCalc : ICalc
+    public class DivisionCalc : ICalc
     {
         private Division division;
-
-        public DivisionCalc(Division division)
-        {
-            this.division = division;
-        }
-
+        
         public DivisionCalc()
         {
             this.division = new Division();

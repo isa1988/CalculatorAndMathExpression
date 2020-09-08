@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMathExpression", "U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{5A549544-256D-440E-9413-507FD59BC707}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathExpressionWithBrackets", "MathExpressionWithBrackets\MathExpressionWithBrackets.csproj", "{A471E678-A259-40A5-A3F0-D859C23C614A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathExpressionCalcLogice", "MathExpressionCalcLogice\MathExpressionCalcLogice.csproj", "{9CD402ED-AF14-4E25-89C3-3ED38456F2F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{5A549544-256D-440E-9413-507FD59BC707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A549544-256D-440E-9413-507FD59BC707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A549544-256D-440E-9413-507FD59BC707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A471E678-A259-40A5-A3F0-D859C23C614A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A471E678-A259-40A5-A3F0-D859C23C614A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A471E678-A259-40A5-A3F0-D859C23C614A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A471E678-A259-40A5-A3F0-D859C23C614A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CD402ED-AF14-4E25-89C3-3ED38456F2F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CD402ED-AF14-4E25-89C3-3ED38456F2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CD402ED-AF14-4E25-89C3-3ED38456F2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CD402ED-AF14-4E25-89C3-3ED38456F2F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations.Subtraction
+namespace MathExpressionCalcLogice.Operations.Subtraction
 {
     /// <summary>
     /// Вычитание

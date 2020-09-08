@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations
+namespace MathExpressionCalcLogice.Operations
 {
     /// <summary>
     /// Операции вычислений
     /// </summary>
-    interface ICalc
+    public interface ICalc
     {
         /// <summary>
         /// Решить и вернуть значение в столбик

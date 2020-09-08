@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations.Division
+namespace MathExpressionCalcLogice.Operations.Division
 {
     /// <summary>
     /// Деление

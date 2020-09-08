@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations
+namespace MathExpressionCalcLogice.Operations
 {
-    class NoCommand : ICalc
+    public class NoCommand : ICalc
     {
         public string Calc(decimal argumetOne, decimal argumetTwo, ref decimal result)
         {

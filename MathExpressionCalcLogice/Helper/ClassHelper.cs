@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Helper
+namespace MathExpressionCalcLogice.Helper
 {
     public static class ClassHelper
     {

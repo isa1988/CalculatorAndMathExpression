@@ -4,17 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathExpression.Operations.Subtraction
+namespace MathExpressionCalcLogice.Operations.Subtraction
 {
-    class SubtractionCalc : ICalc
+    public class SubtractionCalc : ICalc
     {
         private Subtraction subtraction;
-
-        public SubtractionCalc(Subtraction subtraction)
-        {
-            this.subtraction = subtraction;
-        }
-
+        
         public SubtractionCalc()
         {
             this.subtraction = new Subtraction();
