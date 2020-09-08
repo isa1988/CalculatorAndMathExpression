@@ -1,5 +1,4 @@
 ﻿using System;
-using MathExpression;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestMathExpression
@@ -14,12 +13,14 @@ namespace UnitTestMathExpression
 
         public void Calc()
         {
-            TaskOne taskOne = new TaskOne();
-            string answer = taskOne.GetResult("22,67 - 4,5");
-            string answerExp = " 22,67" + Environment.NewLine +
+            MathExpressionWithBrackets.MathExpressionWithBracketsCalc mathExpression = new MathExpressionWithBrackets.MathExpressionWithBracketsCalc();
+            string answer = mathExpression.GetResult("22,67 - 4,5");
+            string answerExp = "Ваш ответ 18,17 " + Environment.NewLine +
+                               " Действие 1, 22,67 - 4,5" + Environment.NewLine +
+                               " 22,67" + Environment.NewLine +
                                "-  4,5" + Environment.NewLine +
                                "______" + Environment.NewLine +
-                               " 18,17" + Environment.NewLine + Environment.NewLine;
+                               " 18,17" + Environment.NewLine;
             Assert.AreEqual(answerExp, answer);
         }
 

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MathExpression;
 
 namespace WFAApp
 {
@@ -25,9 +24,9 @@ namespace WFAApp
                 MessageBox.Show("Вы не заполнили выражение");
                 return;
             }
-            TaskOne taskOne = new TaskOne();
+            MathExpressionWithBrackets.MathExpressionWithBracketsCalc mathExpression = new MathExpressionWithBrackets.MathExpressionWithBracketsCalc();
             txtImport.Text = txtExport.Text + Environment.NewLine;
-            txtImport.Text += taskOne.GetResult(txtExport.Text);
+            txtImport.Text += mathExpression.GetResult(txtExport.Text);
             txtExport.Text = string.Empty;
         }
     }

@@ -61,9 +61,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MathExpression\MathExpression.csproj">
-      <Project>{4255a0e9-5753-4295-a7cc-bb7047cb15c9}</Project>
-      <Name>MathExpression</Name>
+    <ProjectReference Include="..\MathExpressionWithBrackets\MathExpressionWithBrackets.csproj">
+      <Project>{a471e678-a259-40a5-a3f0-d859c23c614a}</Project>
+      <Name>MathExpressionWithBrackets</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

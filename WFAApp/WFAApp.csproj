@@ -103,9 +103,9 @@
       <Project>{5a549544-256d-440e-9413-507fd59bc707}</Project>
       <Name>Calculator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MathExpression\MathExpression.csproj">
-      <Project>{4255a0e9-5753-4295-a7cc-bb7047cb15c9}</Project>
-      <Name>MathExpression</Name>
+    <ProjectReference Include="..\MathExpressionWithBrackets\MathExpressionWithBrackets.csproj">
+      <Project>{a471e678-a259-40a5-a3f0-d859c23c614a}</Project>
+      <Name>MathExpressionWithBrackets</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

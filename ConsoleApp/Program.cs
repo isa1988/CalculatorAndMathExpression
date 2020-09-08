@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathExpression;
 using Calculator;
 
 namespace ConsoleApp
@@ -32,7 +31,7 @@ namespace ConsoleApp
 
         static void MathExpression()
         {
-            TaskOne taskOne = new TaskOne();
+            MathExpressionWithBrackets.MathExpressionWithBracketsCalc mathExpression = new MathExpressionWithBrackets.MathExpressionWithBracketsCalc(); 
             string line = string.Empty;
             do
             {
@@ -43,7 +42,7 @@ namespace ConsoleApp
                     break;
                 }
 
-                Console.WriteLine(taskOne.GetResult(line));
+                Console.WriteLine(mathExpression.GetResult(line));
                 Console.WriteLine("Для продолжения нажмите любую кнопку");
                 Console.ReadLine();
             } while (true);

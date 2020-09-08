@@ -48,31 +48,37 @@ namespace MathExpressionWithBrackets
             var numberList = new List<decimal>();
             var operationList = new List<string>();
             decimal result = 0;
-            foreach (string rec in arguments)
+            try
             {
-                if (string.IsNullOrWhiteSpace(rec))
-                    continue;
-                if (rec == "-" || rec == "+" ||
-                    rec == "*" || rec == "/")
+                foreach (string rec in arguments)
                 {
-                    priority = (Priority) operationPrioritys[rec];
-                    Calculate(rec);
-                }
-                else if (rec == "(" || rec == ")")
-                {
-                    Calculate(rec);
-                }
-                else
-                {
-                    numberList.Add(decimal.Parse(rec));
+                    if (string.IsNullOrWhiteSpace(rec))
+                        continue;
+                    if (rec == "-" || rec == "+" ||
+                        rec == "*" || rec == "/")
+                    {
+                        priority = (Priority) operationPrioritys[rec];
+                        Calculate(rec);
+                    }
+                    else if (rec == "(" || rec == ")")
+                    {
+                        Calculate(rec);
+                    }
+                    else
+                    {
+                        numberList.Add(decimal.Parse(rec));
+                    }
+
                 }
 
+                Calculate("", true);
+
+                return $"Ваш ответ {result} {Environment.NewLine} {resultME.ToString()}";
             }
-
-            Calculate("", true);
-
-            return $"Ваш ответ {result} {Environment.NewLine} {resultME.ToString()}";
-        
+            catch (Exception ex)
+            {
+                return "В выражение есть лишние символы, которые могут повлечь за собой ошибки при вычисление";
+            }
 
             void Calculate(string operationName, bool isLast = false)
             {
