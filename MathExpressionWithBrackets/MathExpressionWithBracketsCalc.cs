@@ -183,7 +183,10 @@ namespace MathExpressionWithBrackets
 
                 if (i == 0)
                 {
-                    number.Append(line);
+                    if (line == "(" || line == ")")
+                        arguments.Add(line);
+                    else
+                        number.Append(line);
                     continue;
                 }
 
